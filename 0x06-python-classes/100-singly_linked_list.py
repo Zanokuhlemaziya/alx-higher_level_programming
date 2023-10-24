@@ -37,14 +37,14 @@ class Node:
             self.__next_node = value
 
 
-    class SinglyLinkedList
+    class SinglyLinkedList:
        """Represent a singly-linked list."""
-
-       def __init__(self):
+        
+        def __init__(self):
            """Initalize a new SinglyLinkedList."""
            self.__head = None
 
-        def sorted_insert(self, value);
+        def sorted_insert(self, value):
             """Insert a new Node to the SinglyLinkedList.
             The node is inserted into the list at the correct
             ordered numerical position.
