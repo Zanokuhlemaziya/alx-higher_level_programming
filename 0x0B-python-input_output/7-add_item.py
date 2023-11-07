@@ -15,5 +15,5 @@ if __name__ == "__main__":
     except:
         list = []
 
-        list.extend(argv[1:])
-        save_to_json_file(list, "add_item.json")
+    list.extend(argv[1:])
+    save_to_json_file(list, "add_item.json")
