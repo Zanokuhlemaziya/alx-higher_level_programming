@@ -1,63 +1,59 @@
 #!/usr/bin/python3
-"""module of 'Square' class"""
+""" Squeare that inherits """
 
-from .rectangle import Rectangle
-
+from models.rectangle import Rectangle
 
 class Square(Rectangle):
-    """Representation of a Square"""
-
+    """ Class Square """
     def __init__(self, size, x=0, y=0, id=None):
-        """class constructor"""
+        """ Constructor """
         super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
-        """size getter method"""
+        """ read size """
         return self.width
 
     @size.setter
     def size(self, value):
-        """size setter method"""
+        """size setter """
         self.width = value
         self.height = value
-    
-    def __str__(self):
-        """custom __str__ method for Square"""
-        return "[{}] ({}) {}/{} - {}".format(self.__class__.__name__, self.id,
-                self.x, self.y, self.width)
+
+    def __str(self):
+        """ Print Method """
+        s = "[Square] ({:d}) {:d}/{:d} - {:d}"
+        s = s.format(self.id, self.x, self.y, self.width)
+        return s
 
     def update(self, *args, **kwargs):
-        """updates values of the Square instance from args or kwargs"""
-        if args is not None and len(args) > 0:
-            i = 0
-            for arg in args:
+        """ Updates square """
+        if len(args):
+            for i, j in enumerate(args):
                 if i == 0:
-                    self.id = arg
+                    self.id = j
                 elif i == 1:
-                    self.size = arg
+                    self.size = j
                 elif i == 2:
-                    self.x = arg
+                    self.x = j
                 elif i == 3:
-                    self.y = arg
-                    
-                i += 1
-            elif kwargs is not None:
-                for (key, value) in kwargs.items():
-                    if key == "id":
-                        self.id = value
-                    elif key == "size":
-                        self.size = value
-                    elif key == "x":
-                        self.x = value
-                    elif key == "y":
-                        self.y = value
+                    self.y = j
+
+            else:
+                if "id" in kwargs:
+                    self.id = kwargs["id"]
+                if "size" in kwargs:
+                    self.size = kwargs["size"]
+                if "x" in kwargs:
+                    self.x = kwargs["x"]
+                if "y" in kwargs:
+                    self.y = kwargs["y"]
 
     def to_dictionary(self):
-        """returns the dictionary representation of the Square instance"""
-        return {
-                'id': self.id,
-                'size': self.size,
-                'x': self.x,
-                'y': self.y
-               }
+        """dictionary square """
+        dictionary = {}
+        dictionary["id"] = self.id
+        dictionary["size"] = self.size
+        dictionary["x"] = self.x
+        dictionary["y"] = self.y
+        return dictionary
