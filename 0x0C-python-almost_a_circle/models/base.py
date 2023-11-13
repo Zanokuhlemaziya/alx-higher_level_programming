@@ -96,18 +96,18 @@ class Base:
 
         try:
             with open(filename, encoding="utf-8") as myfile:
-               r = csv.reader(myfile)
-               if cls.__name__ == "Rectangle":
-                  attr = ["id", "width", "height", "x", "y"]
-               elif cls.__name__ == "Square":
+                r = csv.reader(myfile)
+                if cls.__name__ == "Rectangle":
+                    attr = ["id", "width", "height", "x", "y"]
+                elif cls.__name__ == "Square":
                     attr = ["id", "size", "x", "y"]
-               inslist = 
-               for row in r:
-                   ct, dic = 0, {}
-                   for i in row:
-                       dic[attr[ct]] = int(i)
-                       ct += 1
-                   inslist.append(cls.create(**dic))
-               return inslist
+                inslist = 
+                for row in r:
+                    ct, dic = 0, {}
+                    for i in row:
+                        dic[attr[ct]] = int(i)
+                        ct += 1
+                    inslist.append(cls.create(**dic))
+                return inslist
         except IOError:
             return []
