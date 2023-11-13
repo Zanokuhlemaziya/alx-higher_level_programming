@@ -1,23 +1,18 @@
 #!/usr/bin/python3
 
+
 import unittest
-from models.base import Base
-
-class TestBase(unittest.TestCase):
-    def test_initialization(self):
-        base1 = Base()
-        base2 = Base()
-        self.assertEqual(base1.id, 1)
-        self.assertEqual(base2.id, 2)
-
-    def test_saving_id(self):
-        base = Base(100)
-        self.assertEqual(base.id, 100)
-
-    def test_to_json_string_valid(self):
-        pass
-
-    if __name__ == '__main__':
-        unittest.main()
+import pep8
+import inspect
 
 
+class TestCodeFormat(unittest.TestCase):
+
+    def test_pep8_conformance(self):
+        """Test that we conform to PEP8."""
+        pep8style = pep8.StyleGuide(quiet=True)
+        mode_base = pep8style.check_files(['models/base.py',
+                                           'models/rectangle.py',
+                                           ])
+        self.assertEqual(mode_base.total_errors, 0,
+                         "Found code style errors (models_base).")
